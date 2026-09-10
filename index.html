@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Matchday Value — Football Card Price Lookup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="kicker">Card value lookup</p>
+    <h1>Know what it's worth<br />before you sell it.</h1>
+    <p class="hero-sub">Search a football card by player, year and set. We'll pull live eBay listings and work out a going rate.</p>
+  </div>
+  <div class="pitch-lines" aria-hidden="true"></div>
+</header>
+
+<main>
+  <section class="lookup-panel" aria-label="Card search">
+    <form id="search-form">
+      <div class="field-row">
+        <div class="field field-wide">
+          <label for="player">Player</label>
+          <input type="text" id="player" name="player" placeholder="e.g. Erling Haaland" required />
+        </div>
+        <div class="field">
+          <label for="year">Year</label>
+          <input type="text" id="year" name="year" placeholder="2023" inputmode="numeric" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field field-wide">
+          <label for="set">Set / Brand</label>
+          <input type="text" id="set" name="set" placeholder="e.g. Panini Prizm, Topps Chrome UEFA" />
+        </div>
+        <div class="field">
+          <label for="cardNumber">Card #</label>
+          <input type="text" id="cardNumber" name="cardNumber" placeholder="128" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field field-wide">
+          <label for="parallel">Parallel / variant</label>
+          <input type="text" id="parallel" name="parallel" placeholder="e.g. Silver, Gold Vinyl /10, Refractor" />
+        </div>
+        <div class="field">
+          <label for="grade">Grade</label>
+          <input type="text" id="grade" name="grade" placeholder="PSA 10" />
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="condition">Condition</label>
+          <select id="condition" name="condition">
+            <option value="">Any</option>
+            <option value="1000">New / Mint</option>
+            <option value="2750">Like New</option>
+            <option value="3000">Used</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="maxPrice">Max price (USD)</label>
+          <input type="number" id="maxPrice" name="maxPrice" placeholder="No limit" min="0" />
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn">Search listings</button>
+    </form>
+  </section>
+
+  <section class="results" id="results" hidden>
+    <div class="estimate-block">
+      <p class="estimate-label">Currently listed for</p>
+      <p class="estimate-figure" id="estimate-range">—</p>
+      <p class="estimate-note"><span id="estimate-count">0</span> listings found, sorted cheapest first. These are asking prices from active listings, not confirmed sale prices.</p>
+    </div>
+
+    <table class="ledger" id="ledger-table">
+      <thead>
+        <tr>
+          <th>Listing</th>
+          <th>Condition</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="ledger-body"></tbody>
+    </table>
+  </section>
+
+  <section class="empty-state" id="empty-state" hidden>
+    <p id="empty-message">No listings found. Try loosening the search — drop the card number or parallel and search again.</p>
+  </section>
+
+  <section class="loading-state" id="loading-state" hidden>
+    <p>Checking eBay listings…</p>
+  </section>
+
+  <section class="error-state" id="error-state" hidden>
+    <p id="error-message"></p>
+  </section>
+
+  <footer class="disclosure">
+    <p><strong>How this works:</strong> results come from eBay's Browse API, which returns items currently for sale — not a history of completed sales. Prices here are what sellers are asking today, which can run higher than what cards actually sell for. Treat the estimate as a starting reference, and check condition and parallel/variant carefully before comparing prices; a raw card and a graded PSA 10 of the same player are not the same market.</p>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

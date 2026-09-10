@@ -1,0 +1,298 @@
+:root {
+  --pitch-dark: #14261F;
+  --pitch: #24503F;
+  --pitch-line: rgba(244, 241, 230, 0.14);
+  --chalk: #F4F1E6;
+  --card-stock: #ECE4CC;
+  --card-stock-line: #D9CCA4;
+  --gold: #B9862F;
+  --gold-deep: #8F6522;
+  --ink: #16211C;
+  --ink-soft: #4B564E;
+
+  --font-display: "Big Shoulders Display", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--chalk);
+  line-height: 1.5;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  background: var(--pitch-dark);
+  color: var(--chalk);
+  padding: 4.5rem 1.5rem 3.5rem;
+  overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+  margin: 0 0 0.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.6rem, 7vw, 4rem);
+  line-height: 0.98;
+  margin: 0 0 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(244, 241, 230, 0.82);
+  max-width: 46ch;
+  margin: 0;
+}
+
+.pitch-lines {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 84px,
+    var(--pitch-line) 84px,
+    var(--pitch-line) 85px
+  );
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ---------- Layout ---------- */
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+/* ---------- Search panel ---------- */
+
+.lookup-panel {
+  background: var(--card-stock);
+  border: 1px solid var(--card-stock-line);
+  border-radius: 4px;
+  padding: 2rem;
+  margin-top: -2.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.field-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field-wide {
+  flex: 2;
+}
+
+label {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+
+input, select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--card-stock-line);
+  border-radius: 3px;
+  background: var(--chalk);
+  color: var(--ink);
+}
+
+input:focus, select:focus, button:focus-visible {
+  outline: 2px solid var(--gold-deep);
+  outline-offset: 1px;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--chalk);
+  background: var(--pitch-dark);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+button[type="submit"]:hover {
+  background: var(--pitch);
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* ---------- Results ---------- */
+
+.results {
+  margin-top: 2.5rem;
+}
+
+.estimate-block {
+  text-align: left;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--card-stock-line);
+  margin-bottom: 1rem;
+}
+
+.estimate-label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.2rem;
+}
+
+.estimate-figure {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 3.2rem;
+  color: var(--gold-deep);
+  margin: 0;
+  line-height: 1;
+}
+
+.estimate-range {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0.5rem 0 0;
+}
+
+.estimate-note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0.6rem 0 0;
+}
+
+.ledger {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.ledger thead th {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 0.5rem 0.5rem;
+  border-bottom: 1px solid var(--card-stock-line);
+}
+
+.ledger tbody td {
+  padding: 0.75rem 0.5rem;
+  border-bottom: 1px solid var(--card-stock-line);
+  font-size: 0.92rem;
+  vertical-align: top;
+}
+
+.ledger .price-cell {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ledger .title-cell a {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--card-stock-line);
+}
+
+.ledger .title-cell a:hover {
+  border-bottom-color: var(--ink);
+}
+
+.ledger .link-cell a {
+  font-size: 0.85rem;
+  color: var(--gold-deep);
+  text-decoration: none;
+}
+
+/* ---------- States ---------- */
+
+.empty-state, .loading-state, .error-state {
+  margin-top: 2.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--card-stock-line);
+  border-radius: 3px;
+  background: var(--card-stock);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.error-state {
+  background: #F6E7E1;
+  border-color: #DDB8A6;
+  color: #7A3B22;
+}
+
+/* ---------- Disclosure ---------- */
+
+.disclosure {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--card-stock-line);
+}
+
+.disclosure p {
+  font-size: 0.83rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 520px) {
+  .field-row {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .lookup-panel {
+    padding: 1.5rem;
+  }
+  .estimate-figure {
+    font-size: 2.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
