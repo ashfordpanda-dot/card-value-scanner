@@ -88,6 +88,84 @@ main {
   padding: 0 1.5rem 4rem;
 }
 
+/* ---------- Scan panel ---------- */
+
+.scan-panel {
+  background: var(--pitch);
+  color: var(--chalk);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  margin-top: -2.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.scan-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  margin: 0 0 0.35rem;
+  letter-spacing: -0.01em;
+}
+
+.scan-sub {
+  font-size: 0.9rem;
+  color: rgba(244, 241, 230, 0.78);
+  margin: 0 0 1.1rem;
+  max-width: 48ch;
+}
+
+.scan-button {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  background: var(--gold);
+  color: var(--pitch-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.scan-button:hover {
+  background: #cf9a3d;
+}
+
+.scan-preview {
+  margin-top: 1.1rem;
+  max-width: 220px;
+}
+
+.scan-preview img {
+  width: 100%;
+  border-radius: 3px;
+  display: block;
+}
+
+.scan-status {
+  margin-top: 0.9rem;
+  font-size: 0.88rem;
+  color: rgba(244, 241, 230, 0.9);
+}
+
+.scan-detected {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+}
+
+.scan-detected summary {
+  cursor: pointer;
+  color: var(--gold);
+}
+
+.scan-detected p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  color: rgba(244, 241, 230, 0.85);
+  margin-top: 0.6rem;
+}
+
 /* ---------- Search panel ---------- */
 
 .lookup-panel {
