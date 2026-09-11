@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/5.1.0/tesseract.min.js"></script>
 </head>
 <body>
 
@@ -21,6 +22,23 @@
 </header>
 
 <main>
+  <section class="scan-panel" aria-label="Scan a card">
+    <p class="scan-label">Scan a card</p>
+    <p class="scan-sub">Take a photo and we'll try to read the year, set, and card number for you. You'll still get to check everything before searching.</p>
+    <label class="scan-button" for="card-photo-input">
+      <span id="scan-button-text">Take or choose a photo</span>
+    </label>
+    <input type="file" id="card-photo-input" accept="image/*" capture="environment" hidden />
+    <div class="scan-preview" id="scan-preview" hidden>
+      <img id="scan-preview-img" alt="Card photo preview" />
+    </div>
+    <p class="scan-status" id="scan-status" hidden></p>
+    <details class="scan-detected" id="scan-detected" hidden>
+      <summary>Show raw detected text</summary>
+      <p id="scan-detected-text"></p>
+    </details>
+  </section>
+
   <section class="lookup-panel" aria-label="Card search">
     <form id="search-form">
       <div class="field-row">
